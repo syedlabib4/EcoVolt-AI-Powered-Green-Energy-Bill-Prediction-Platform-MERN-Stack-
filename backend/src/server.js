@@ -21,9 +21,11 @@ app.use(cors({
     if (!origin) return callback(null, true);
     
     const isLocalhost = /^http:\/\/localhost(:\d+)?$/.test(origin);
+    const isVercel = /^https:\/\/eco-volt-ai-powered-[a-z0-9-]+\.vercel\.app$/.test(origin);
     const isFrontendUrl = process.env.FRONTEND_URL && origin === process.env.FRONTEND_URL;
-
-    if (isLocalhost || isFrontendUrl) {
+    
+    // Check if origin matches allowed patterns or config URL
+    if (isLocalhost || isVercel || isFrontendUrl) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
