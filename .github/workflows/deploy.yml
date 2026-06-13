@@ -32,11 +32,9 @@ jobs:
         run: npm install -g vercel@latest
 
       - name: 🔗 Pull Vercel Environment
-        working-directory: frontend
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: 🚀 Deploy Frontend to Vercel
-        working-directory: frontend
         run: vercel deploy --prod --token=${{ secrets.VERCEL_TOKEN }}
 
   # ──────────────────────────────────────────────
@@ -62,9 +60,7 @@ jobs:
         run: npm install -g vercel@latest
 
       - name: 🔗 Pull Vercel Environment
-        working-directory: backend
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: 🚀 Deploy Backend to Vercel
-        working-directory: backend
         run: vercel deploy --prod --token=${{ secrets.VERCEL_TOKEN }}
